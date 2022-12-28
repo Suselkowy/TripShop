@@ -1,0 +1,30 @@
+<p class="bigText">Filter</p>
+
+<form [formGroup]="filterForm">
+    <div class="form__element">
+        <label for="destCountry">Localization: </label>
+        <input id="destCountry" type="text" formControlName="destCountry">
+    </div>
+    
+    <div class="form__element form__element--price">
+        <label class="price__label">Price:</label>
+        <div><input id="minPrice" class="dual-input" type="text" formControlName="minPrice"><span class="period">-</span><input class="dual-input" id="maxPrice" type="text" formControlName="maxPrice"></div>
+    </div>
+    
+    <div class="form__element form__element--price">
+        <label>Date:</label>
+        <div><input id="startDate" type="date" class="dual-input" formControlName="startDate"> - <input id="endDate"  class="dual-input" type="date" formControlName="endDate"></div>
+    </div>
+    
+    <div class="form__element form__element--price">
+        <label for="rating">Rating:</label>
+        <div class="rating">
+        <div><input type="checkbox" value="0" id="radio--0" name="raiting" formControlName="raiting--0"><label for="radio--0"><span class="gray">★★★★★</span></label></div>
+        <div><input type="checkbox" value="1" id="radio--1" name="raiting" formControlName="raiting--1"><label for="radio--1"><span class="gray"><span class="black">★</span>★★★★</span></label></div>
+        <div><input type="checkbox" value="2" id="radio--2" name="raiting" formControlName="raiting--2"><label for="radio--2"><span class="gray"><span class="black">★★</span>★★★</span></label></div>
+        <div><input type="checkbox" value="3" id="radio--3" name="raiting" formControlName="raiting--3"><label for="radio--3"><span class="gray"><span class="black">★★★</span>★★</span></label></div>
+        <div><input type="checkbox" value="4" id="radio--4" name="raiting" formControlName="raiting--4"><label for="radio--4"><span class="gray"><span class="black">★★★★</span>★</span></label></div>
+        <div><input type="checkbox" value="5" id="radio--5" name="raiting" formControlName="raiting--5"><label for="radio--5"><span class="gray"><span class="black">★★★★★</span></span></label></div>
+        </div>
+    </div>
+</form>

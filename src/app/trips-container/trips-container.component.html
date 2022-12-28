@@ -1,0 +1,11 @@
+<div class="trips__sum" *ngIf="this.authService.isLoggedIn()">Trips addeed to cart: <span class="trips__sum--digit" [ngClass]="{'sumAmountRed':sumAmount <= 10, 'sumAmountGreen':sumAmount > 10}">{{sumAmount}}</span></div>
+<div class="main__container">
+    <div class="filter__container">
+        <app-trip-filter (searchArgsChanged)="changeSearchArgs($event)"></app-trip-filter>
+    </div>
+    <div class="trips__container">
+        <app-trip *ngFor="let trip of (trips | countryPipe : searchArgs['destCountry'] | pricePipe : searchArgs['minPrice'] : searchArgs['maxPrice'] | datePipe : searchArgs['startDate'] : searchArgs['endDate'] | raitingPipe : searchArgs['raiting'])" [data]=trip (sumAmountChanged)="changeSumAmount($event)" (removeTrip)="removeTrip($event)"
+        [ngClass]="{'minPrice': trip.price == getMinPrice(trips | countryPipe : searchArgs['destCountry'] | pricePipe : searchArgs['minPrice'] : searchArgs['maxPrice'] | datePipe : searchArgs['startDate'] : searchArgs['endDate'] | raitingPipe : searchArgs['raiting']), 'maxPrice': trip.price == getMaxPrice(trips | countryPipe : searchArgs['destCountry'] | pricePipe : searchArgs['minPrice'] : searchArgs['maxPrice'] | datePipe : searchArgs['startDate'] : searchArgs['endDate'] | raitingPipe : searchArgs['raiting'])}"></app-trip>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </div>
+</div>

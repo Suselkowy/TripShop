@@ -1,0 +1,22 @@
+
+<div class="filter">
+    <div class="btn yellow" (click)="setStatus('coming up')" [ngClass]="{'active': status == 'coming up'}">coming up</div>
+    <div class="btn green" (click)="setStatus('active')" [ngClass]="{'active': status == 'active'}">active</div>
+    <div class="btn red" (click)="setStatus('finished')" [ngClass]="{'active': status == 'finished'}">finished</div>
+</div>
+<div class="labels">
+    <div class="label__price">Price</div>
+    <div class="label__startDate">Date of start</div>
+    <div class="label__endDate">Date of end</div>
+    <div class="label__destCountry">Destination country</div>
+    <div class="label__amount">Amount</div>
+    <div class="label__status">Status</div>
+</div>
+<div *ngFor="let item of (items | historyPipe : status)" class="item">
+    <div class="price">{{item.price}}</div>
+    <div class="startDate">{{item.startDate}}</div>
+    <div class="endDate">{{item.endDate}}</div>
+    <div class="destCountry">{{item.destCountry}}</div>
+    <div class="amount">{{item.amount}}</div>
+    <div class="status"><span [ngClass]="{'red': getStatus(item.startDate, item.endDate) == 'finished', 'green': getStatus(item.startDate, item.endDate) == 'active', 'yellow': getStatus(item.startDate, item.endDate) == 'coming up' }">{{getStatus(item.startDate, item.endDate)}}</span></div>
+</div>

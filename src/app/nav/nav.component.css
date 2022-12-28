@@ -1,0 +1,215 @@
+.nav__container{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.btn{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+}
+
+.nav__control{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(300px);
+}
+
+.nav__control__element{
+    width: 70px;
+    text-align: center;
+}
+
+.btn--user, .btn--notification{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    color: var(--green-darker);
+}
+
+.nav__btns{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+}
+
+.nav__logo{
+    width: 30%;
+}
+
+.nav__control__element, .btn, .nav__logo{
+    cursor: pointer;
+}
+
+.btn--user{
+    position: relative;
+}
+
+.userExpand{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 200px;   
+    height: fit-content;
+    background-color: white;
+    z-index: 2;
+    display: none;
+    padding: 1rem;
+}
+
+.btn--user:hover .userExpand{
+    display: block;
+}
+
+.userExpand__element{
+    padding: 0.5rem;
+    border-bottom: 1px var(--color-outline) solid;
+}
+
+.special{
+    text-align: center;
+    cursor: default;
+    font-weight: 600;
+}
+
+.userExpand__element:nth-last-of-type(1){
+   border-bottom: none;
+}
+
+.lines{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.lines__element{
+    display: none;
+    width: 40px;
+    height: 5px;
+    background-color: black;
+    border-radius: 10px;
+    margin-bottom: 5px;
+
+    z-index: 2;
+}
+
+.lines__button{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+
+    z-index: 3;
+}
+
+.mobile-nav__container{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: white;
+}
+
+.btn--login, .btn--register{
+    border-radius: 10px;
+    border: 2px var(--color-green) solid;
+}
+
+.btn--login{
+    border: 2px var(--color-green) solid;
+}
+
+.btn--register{
+    background: var(--color-green);
+}
+
+.btn--register:hover{
+    background:none;
+}
+
+.btn--login:hover{
+    background: var(--color-green);
+}
+
+@media screen and (max-width: 800px) {
+    
+    .header__logo{
+        font-size: 1.5rem;
+    }
+
+    .mobile-nav__container{
+        display: block;
+        height: 100vh;
+        transition: transform 0.6s ease-in-out;
+
+        font-size: 2rem;
+    }
+
+    .mobile-nav__container a{
+        color: white;
+    }
+
+    .nav__control__element{
+        display: none;
+    }
+
+    .lines__element{
+        display: block;
+        transition: all 0.6s ease-in;
+    }
+
+    .lines__button:checked + .mobile-nav__container{
+        transform: translateY(100%);
+    }
+
+    .lines__button:checked ~ .lines__element:nth-of-type(3){
+        opacity: 0;
+    }
+
+    .lines__button:checked ~ .lines__element:nth-of-type(2){
+        transform: translateY(12px) rotate(45deg);
+    }
+
+    .lines__button:checked ~ .lines__element:nth-of-type(4){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .mobile-nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .mobile-nav__element{
+        height: 25%;
+        align-self: center;
+        cursor: pointer;
+    }
+
+    .mobile-nav__element:nth-of-type(1){
+        margin-top: 70px;
+    }
+
+}

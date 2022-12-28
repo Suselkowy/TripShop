@@ -1,0 +1,15 @@
+<div class="star__container">
+    <div class="rate">
+    <input type="radio" id="star5" name="readOnly" />
+    <label for="star5" title="text" class="gray" [ngClass]="{'yellow': raiting>=5}"></label>
+    <input type="radio" id="star4" name="readOnly" />
+    <label for="star4" title="text"  class="gray" [ngClass]="{'yellow': raiting>=4}"></label>
+    <input type="radio" id="star3" name="readOnly" />
+    <label for="star3" title="text"  class="gray" [ngClass]="{'yellow': raiting>=3}"></label>
+    <input type="radio" id="star2" name="readOnly" />
+    <label for="star2" title="text"  class="gray" [ngClass]="{'yellow': raiting>=2}"></label>
+    <input type="radio" id="star1" name="readOnly" />
+    <label for="star1" title="text"  class="gray" [ngClass]="{'yellow': raiting>=1}"></label>
+    </div>
+    <span class="yellow" *ngIf="showTotal">({{this.revievs.length}})</span>
+  </div>

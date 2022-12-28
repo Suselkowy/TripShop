@@ -1,0 +1,20 @@
+<div class="user-list">
+    <div class="user__element user__element--header">
+        <div class="user__element__single user__element__single--name">Name</div>
+        <div class="user__element__single user__element__single--email">Email</div>
+        <div class="user__element__single user__element__single--user">User</div>
+        <div class="user__element__single user__element__single--manager">Manager</div>
+        <div class="user__element__single user__element__single--admin">Admin</div>
+        <div class="user__element__single user__element__single--banned">Banned</div>
+        <div class="user__element__single"></div>
+    </div>
+    <div *ngFor="let user of users" class="user__element">
+        <div class="user__element__single user__element__single--name">{{user.name}}</div>
+        <div class="user__element__single user__element__single--email">{{user.email}}</div>
+        <div class="user__element__single user__element__single--user" [ngClass]="{true:user.permissions[0] == '1', false:user.permissions[0] != '1'}">{{user.permissions[0] == "1"}}</div>
+        <div class="user__element__single user__element__single--manager" [ngClass]="{true:user.permissions[1] == '1', false:user.permissions[1] != '1'}">{{user.permissions[1] == "1"}}</div>
+        <div class="user__element__single user__element__single--admin" [ngClass]="{true:user.permissions[2] == '1', false:user.permissions[2] != '1'}">{{user.permissions[2] == "1"}}</div>
+        <div class="user__element__single user__element__single--banned" [ngClass]="{true:user.permissions[3] == '1', false:user.permissions[3] != '1'}">{{user.permissions[3] == "1"}}</div>
+        <div class="user__element__single btn btn--edit" routerLink="/admin/{{user.key}}" routerLinkActive="active">Edit</div>
+    </div>
+</div>

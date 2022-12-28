@@ -1,0 +1,110 @@
+[{
+    "id":1,
+    "name":"Alps in 2 days",
+    "destCountry":"Austria",
+    "startDate":"2022-12-01",
+    "endDate":"2022-12-03",
+    "price":1250.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":12,
+    "imgLink":["https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/273935/pexels-photo-273935.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},{
+    "id":2,
+    "name":"a great desert",
+    "destCountry":"Egipt",
+    "startDate":"2022-12-20",
+    "endDate":"2022-12-25",
+    "price":2000.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":6,
+    "imgLink":["https://images.pexels.com/photos/273935/pexels-photo-273935.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},
+{
+    "id":3,
+    "name":"USA national parks",
+    "destCountry":"USA",
+    "startDate":"2022-12-10",
+    "endDate":"2022-12-15",
+    "price":10000.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":120,
+    "imgLink":["https://images.pexels.com/photos/2387418/pexels-photo-2387418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},
+{
+    "id":4,
+    "name":"amazing forests of central europe",
+    "destCountry":"Poland",
+    "startDate":"2022-12-23",
+    "endDate":"2022-12-26",
+    "price":5200.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":3,
+    "imgLink":["https://images.pexels.com/photos/1757363/pexels-photo-1757363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},
+{
+    "id":5,
+    "name":"Baloon trip",
+    "destCountry":"Germany",
+    "startDate":"2022-12-02",
+    "endDate":"2022-12-20",
+    "price":1300.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":2,
+    "imgLink":["https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},
+{
+    "id":6,
+    "name":"lone island",
+    "destCountry":"Canaris",
+    "startDate":"2022-12-09",
+    "endDate":"2022-12-15",
+    "price":15000.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":20,
+    "imgLink":["https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},
+{
+    "id":7,
+    "name":"japan wonders",
+    "destCountry":"Japan",
+    "startDate":"2022-12-15",
+    "endDate":"2022-12-25",
+    "price":6700.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":6,
+    "imgLink":["https://images.pexels.com/photos/5137664/pexels-photo-5137664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},
+{
+    "id":8,
+    "name":"rainforest trip",
+    "destCountry":"Brazil",
+    "startDate":"2022-12-03",
+    "endDate":"2022-12-09",
+    "price":8700.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":15,
+    "imgLink":["https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},
+{
+    "id":9,
+    "name":"totori sand dunes",
+    "destCountry":"Japan",
+    "startDate":"2022-12-02",
+    "endDate":"2022-12-05",
+    "price":5400.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":16,
+    "imgLink":["https://images.pexels.com/photos/8241099/pexels-photo-8241099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+},
+{
+    "id":10,
+    "name":"Trzy Korony",
+    "destCountry":"Poland",
+    "startDate":"2022-12-11",
+    "endDate":"2022-12-16",
+    "price":600.00,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia ac elit vel efficitur. Fusce pharetra mauris id fermentum sagittis. Integer in tincidunt leo, id faucibus lectus. Nulla facilisi. Quisque sed libero iaculis, tempor mauris nec, euismod ligula. Aenean ut ligula leo. Pellentesque imperdiet nibh velit, sodales finibus mi faucibus eget. Duis pulvinar, diam quis imperdiet sagittis, lacus sem varius ante",
+    "availableTrips":0,
+    "imgLink":["https://upload.wikimedia.org/wikipedia/commons/9/90/Pieniny_Trzy_Korony.jpg","https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+}
+]

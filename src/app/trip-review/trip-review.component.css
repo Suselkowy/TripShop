@@ -1,0 +1,158 @@
+:host{
+    width: 100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-weight: 300;
+}
+
+.rate {
+    float: left;
+    height: auto;
+    width: fit-content;
+}
+.rate > input {
+    display: none;
+}
+.rate > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+}
+.rate > label:before {
+    content: '★ ';
+}
+
+.gray{
+    color:#ccc;
+}
+
+
+.black{
+    color: black;
+}
+
+.yellow, .checked{
+    color: var(--color-yellow-darker);
+}
+
+.yellowish{
+    color: #808000;
+}
+
+.star__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reviews{
+    width: 100%;
+}
+
+.review{
+    width: 100%;
+    border-bottom: 1px var(--color-outline) solid;  
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.review:nth-of-type(1){
+    border-top: 1px var(--color-outline) solid; 
+}
+
+.review__avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(116, 115, 115);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.5rem;
+}
+
+.review__avatar i{
+    color: white;
+    font-size: 1.5rem;
+}
+.review__avatar__container{
+    display: flex;
+
+    align-items: center;
+}
+
+.review__comment{
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+.star{
+    font-size: 1.7rem;
+}
+
+.smallImportance{
+    color: rgb(151, 151, 151);
+}
+
+.centered{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.review__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 1rem;
+}
+
+.error{
+    color: var(--color-red-darker)
+}
+
+textarea{
+    width: 600px;
+	height: 120px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+    border-radius: 2px;
+}
+
+.form__element{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+.star__container{
+    margin-top: 0.5rem;
+}
+
+.form__element input{
+    border-radius: 5px;
+    border: 1px var(--color-outline) solid;
+    padding: 0.5rem;
+}
+
+.btn{
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem 2rem;
+    background: var(--gradient-green);
+    border-radius: 10px;
+    font-size: 1.2rem;
+
+    margin-top: 2rem;
+    cursor: pointer;
+    border: none;
+}

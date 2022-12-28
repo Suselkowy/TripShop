@@ -1,0 +1,104 @@
+
+.trips__container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+app-trip{
+    margin-bottom: 0.5rem;
+    width: 95%;
+    border-radius: 2px;
+    border: 1px var(--color-outline) solid;
+}
+
+.minPrice{
+    border: 2px var(--color-red-darker) solid;
+}
+
+.maxPrice{
+    border: 2px var(--color-green-darker) solid;
+}
+
+.sumAmountGreen{
+    background: var(--gradient-green);
+}
+
+.sumAmountRed{
+    background: var(--gradient-red);
+}
+
+.filter__container{
+    width: 20%;
+    border: 1px var(--color-outline) solid;
+    height: fit-content;
+}
+
+.form__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.form--btn{
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    background: var(--gradient-green);
+    border-radius: 10px;
+    font-size: 1.2rem;
+
+    cursor: pointer;
+}
+
+.main__container{
+    display: flex;
+}
+
+.trips__sum{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    line-height: 1.3;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    padding: 1rem 0;
+    background-color: var(--color-background);
+    z-index: 1;
+}
+
+.trips__sum--digit{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.hidden{
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .main__container{
+        flex-direction: column;
+    }
+
+    .filter__container{
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .trips__container{
+        width: 100%;
+    }
+}

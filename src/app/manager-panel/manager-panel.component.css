@@ -1,0 +1,32 @@
+.trip__element{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+.trip__element__single{
+    text-align: center;
+    width: 100px;
+}
+
+.trip__element__single--id{
+    width: 40px;
+}
+
+.trip__element__single--name{
+    width: calc(100% - 40px - 100px*7);
+    min-width: 100px;
+}
+
+.btn{
+    border-radius: 10px;
+    margin: 0 5px;
+    box-sizing: border-box;
+}
+
+.btn--delete{
+    background: var(--gradient-red);
+}
+
+.btn--edit{
+    background: var(--gradient-yellow);
+}

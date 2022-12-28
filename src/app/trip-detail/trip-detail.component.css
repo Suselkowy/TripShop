@@ -1,0 +1,200 @@
+:host{
+    width: 100%;
+    height: fit-content;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    --color-accent-gray: #ccc;
+}
+.trip__card{
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin:0;
+}
+
+.price{
+    font-size: 2rem;
+}
+
+.column{
+    width: 75%;
+    padding: 0 2rem 0 0;
+}
+
+.column--2{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem 1rem;
+}
+
+.column--2 p, trip__raiting{
+    margin: 0.4rem;
+}
+
+/* .trip__info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.trip__image__container{
+    width: 100%;
+    height: 600px;
+    background-color: black;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.trip__image{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn__back{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--gradient-green);
+    z-index: 1;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.trip__reservation{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.reservation__holder{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservation__number{
+    padding: 0 1rem;
+    font-size: 2rem;
+}
+
+.reservation__holder{
+    font-size: 2rem;
+}
+
+.reservation__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reservation__button--subtract{
+    background: var(--gradient-red);
+}
+
+.reservation__button--add{
+    background: var(--gradient-green);
+}
+
+.hidden{
+    display: none;
+}
+
+.lowTripsLeft{
+    color: var(--color-red-darker) ;
+}
+
+.trip__raiting__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+trip__raiting{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trip__delete{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: var(--color-red-darker);
+
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.line{
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color:var(--color-accent-gray);
+    height: 1px;
+}
+
+.nostock{
+    font-size: 1.5rem;
+}
+
+.arrow{
+    position: absolute;
+    font-size: 3rem;
+    background: var(--gradient-green);
+    width: 50px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.arrow--left{
+    top: calc(300px - 1.5rem);
+    left: 1rem;
+}
+.arrow--right{
+    top: calc(300px - 1.5rem);
+    right: 1rem;
+}
+
+.trip__description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.trip__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+h1{
+    font-weight: 300;
+}
+
+

@@ -1,0 +1,54 @@
+<h1 *ngIf="reviews.length > 0" class="centered" >Reviews</h1>
+<div class="reviews">
+    <div *ngFor="let review of reviews" class="review">
+        <div class="review__avatar__container">
+            <div class="review__avatar"><i class="fa-solid fa-user-tie"></i></div>
+            <p>{{review.user}}</p>
+        </div>
+        <div class="review__stars"  *ngIf="review.raiting > 0">
+            <span class="star gray" [ngClass]="{'yellow': review.raiting >=1}">★</span>
+            <span class="star gray" [ngClass]="{'yellow': review.raiting >=2}">★</span>
+            <span class="star gray" [ngClass]="{'yellow': review.raiting >=3}">★</span>
+            <span class="star gray" [ngClass]="{'yellow': review.raiting >=4}">★</span>
+            <span class="star gray" [ngClass]="{'yellow': review.raiting >=5}">★</span>
+        </div>
+        <div class="review__comment">
+            {{review.comment}}
+        </div>
+        <div class="review__buyDate smallImportance">{{review.buyDate}}</div>
+    </div>
+</div>
+<h1 class="centered" *ngIf="available">Add review</h1>
+<form action="" class="review__form" [formGroup]="reviewForm" *ngIf="available">
+    <div class="star__container" *ngIf="authService.isUser()">
+        Rating<span class="error">*</span>:
+        <div class="rate">
+        <input type="radio" id="starreview5" name="rate" value="5" formControlName="rate"  />
+        <label for="starreview5" title="text" (click)="rate(5)" class="gray" [ngClass]="{'yellow': rated>=5}"></label>
+        <input type="radio" id="starreview4" name="rate" value="4" formControlName="rate"  />
+        <label for="starreview4" title="text" (click)="rate(4)" class="gray" [ngClass]="{'yellow': rated>=4}"></label>
+        <input type="radio" id="starreview3" name="rate" value="3" formControlName="rate"   />
+        <label for="starreview3" title="text" (click)="rate(3)" class="gray" [ngClass]="{'yellow': rated>=3}"></label>
+        <input type="radio" id="starreview2" name="rate" value="2" formControlName="rate"  />
+        <label for="starreview2" title="text" (click)="rate(2)" class="gray" [ngClass]="{'yellow': rated>=2}"></label>
+        <input type="radio" id="starreview1" name="rate" value="1" formControlName="rate"  />
+        <label for="starreview1" title="text" (click)="rate(1)" class="gray" [ngClass]="{'yellow': rated>=1}"></label>
+        </div>
+    </div>
+    <span *ngIf="formErrors.rate" class="error">{{ formErrors.rate }}</span>
+    <div class="form__element">
+        <label for="comment">Comment<span class="error">*</span>:</label>
+        <textarea name="comment" id="comment" cols="30" rows="10" formControlName="comment" minlength="50" maxlength="500">
+
+        </textarea>
+        <span *ngIf="formErrors.comment" class="error">{{ formErrors.comment }}</span>
+    </div>
+    <div class="form__element">
+        <label for="buyDate">Date of purchase:</label>
+        <input id="buyDate" type="date" formControlName="buyDate" />
+        <span *ngIf="formErrors.buyDate" class="error">{{ formErrors.buyDate }}</span>
+    </div>
+    <button type="submit" (click)="addReview()" class="btn">Add</button>
+</form>
+
+

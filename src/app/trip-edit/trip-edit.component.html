@@ -1,0 +1,101 @@
+<h2>Add trip</h2>
+<form [formGroup]="tripForm">
+    <div>
+        <div class="form__element">
+            <label for="name">Name:</label>
+            <input id="name" type="text" formControlName="name" />
+        </div>
+
+        <span *ngIf="formErrors.name" class="error">{{ formErrors.name }}</span>
+    </div>
+    
+    <div>
+        <div class="form__element"> 
+            <label for="destCountry">Destination Country:</label>
+            <input id="destCountry" type="text" formControlName="destCountry" />
+        </div>
+
+        <span *ngIf="formErrors.destCountry" class="error">{{ formErrors.destCountry }}</span>
+    </div>
+    
+    <div>
+        <div class="form__element">
+            <label for="startDate">Date of start:</label>
+            <input id="startDate" type="date" formControlName="startDate" />
+        </div>
+
+        <span *ngIf="formErrors.startDate" class="error">{{ formErrors.startDate }}</span>
+        <div *ngIf="dateError2 != '' " class="error">
+            {{ dateError2}}
+         </div>
+    </div>
+    
+    <div>
+        <div class="form__element">
+            <label for="endDate">Date of finish:</label>
+            <input id="endDate" type="date" formControlName="endDate" />
+        </div>
+
+        <span *ngIf="formErrors.endDate" class="error">{{ formErrors.endDate }}</span>
+        <div *ngIf="dateError != '' " class="error">
+            {{ dateError}}
+         </div>
+    </div>
+    
+    <div>
+        <div class="form__element">
+            <label for="price">Price:</label>
+            <input id="price" type="number" formControlName="price" />
+        </div>
+        
+        <span *ngIf="formErrors.price" class="error">{{ formErrors.price }}</span>
+    </div>
+    
+    <div>
+        <div class="form__element">
+            <label for="description">Description:</label>
+            <textarea id="description" name="" id="" cols="30" rows="10" formControlName="description"></textarea>
+            <!-- <input id="description" type="text" formControlName="description" /> -->
+        </div>
+        
+        <span *ngIf="formErrors.description" class="error">{{ formErrors.description }}</span>
+    </div>
+
+    <div>
+        <div class="form__element">
+            <label for="availableTrips">Number of available spots:</label>
+            <input id="availableTrips" type="number" formControlName="availableTrips" />
+        </div>
+        
+        <span *ngIf="formErrors.availableTrips" class="error">{{ formErrors.availableTrips }}</span>
+    </div>
+    
+    <div>
+        <div class="form__element">
+            <label for="imgLink">Photo path:</label>
+            <input id="imgLink" type="text" formControlName="imgLink" />
+        </div>
+        <span *ngIf="formErrors.imgLink" class="error">{{ formErrors.imgLink }}</span>
+    </div>
+
+
+    <div formArrayName="imgLinks">
+        <div class="form__element form-group" *ngFor="let link of linkControls; let i = index" >
+            <label for="imgLink"  class="delete" (click)="onDeleteLink(i)">Delete path</label>
+            <input type="text" class="fom-control" [formControlName]="i" >
+        </div>
+
+    </div>
+    <div class="form__element">
+        <label for="imgLink"></label>
+        <p (click)="onAddLink()" class="add">Add next path</p>
+    </div>
+    <div class="form__element">
+        <label for="imgLink"></label>
+        <span *ngIf="checkFormArrayInvalid()" class="error">all photo path fields required</span>
+    </div>
+
+    <button type="submit" (click)="submitForm()" class="btn">Add</button>
+    <!-- <p *ngIf="showError">Wprowadź poprawne dane!</p>
+    <p *ngIf="showOk">Poprawnie dodano potrawę!</p> -->
+    </form>

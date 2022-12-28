@@ -1,0 +1,22 @@
+<div class="cartNotEmpty" *ngIf="items.length > 0">
+    <div *ngFor="let trip of items" class="cart__item">
+        <div class="cart__item__container">
+            <div class="group group--1">
+                <img src="{{trip.imgLink[0]}}" alt="" class="item__img"> 
+                <div class="item__name">{{trip.name | uppercase }}</div>
+            </div>
+            <div class="group group--2">
+                <div class="item__price">{{trip.price | currency}} </div>
+                <div class="item__amount">{{trip.amount}}</div>
+            </div>
+        </div>
+        <hr class="line">
+        <div class="cart__item__summary">
+            <div>Total: {{trip.price * trip.amount | currency}}</div>
+            <div class="item__btn" (click)="buyTrip(trip)">Buy</div>
+        </div>
+    </div>
+</div>
+<div class="cartEmpty" *ngIf="items.length <= 0">
+    <p>Cart is Empty :(</p>   
+</div>

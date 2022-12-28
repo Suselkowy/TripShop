@@ -1,0 +1,18 @@
+<div class="main">
+    <form class="loginForm" [formGroup]="loginForm">     
+        <div class="form__element">
+            <label class="email">E-mail: </label>
+            <input id="email" class="email" type="text" formControlName="email" placeholder="E-mail">
+            <span *ngFor="let error of formErrors.email" class="error">{{ error}}</span>
+        </div>
+        
+        <div class="form__element">
+            <label>Password: </label>
+            <input id="password" type="password" formControlName="password" placeholder="Password">
+            <span *ngFor="let error of formErrors.password" class="error">{{ error}}</span>
+        </div>
+
+        <button type="submit" class="form__element btn" (click)="submitForm()">Login</button>
+        <div class="registerBtn" routerLink="/register" routerLinkActive="active">Don't have an account ?</div>
+    </form>
+</div>

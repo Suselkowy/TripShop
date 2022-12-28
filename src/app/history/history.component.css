@@ -1,0 +1,79 @@
+.labels{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.labels div{
+    width: calc(16.6%);
+    text-align: center;
+}
+
+.item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    border-bottom: 2px var(--color-outline) solid;
+}
+
+.item:nth-last-child(1){
+    border-bottom: none;
+}
+
+.item div{
+    text-align: center;
+    width: calc(16.6%);
+}
+
+.red{
+    background: var(--gradient-red);
+}
+
+.green{
+    background: var(--gradient-green);
+}
+
+.yellow{
+    background: var(--gradient-yellow);
+}
+
+.status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status span{
+    border-radius: 10px;
+    display: block;
+    width: 60%;
+    height: 70%;
+}
+
+.btn{
+    width: 100px;
+    border-radius: 10px;
+    margin-right: 1.5rem;
+    text-align: center;
+    padding: 0.5rem 1rem;
+
+    cursor: pointer;
+}
+
+.filter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.gray{
+    background-color: var(--color-outline);
+}
+
+.active{
+    transform: translateY(10px);
+}

@@ -1,0 +1,11 @@
+.btn{
+    width: fit-content;
+    height: fit-content;
+    padding: 0.8rem;
+    background: var(--gradient-green);
+    border-radius: 10px;
+    font-size: 1rem;
+
+    cursor: pointer;
+    border: none;
+}

@@ -1,0 +1,36 @@
+<div class="trip__info column column--1">
+    <figure class="trip__image__container" routerLink="/trips/{{data.id}}" routerLinkActive="active">
+        <img src="{{data.imgLink[0]}}" alt="" class="trip__image">
+    </figure>
+
+    <p class="trip__desc">{{data.description}}</p>
+</div>
+<div class="column column--2">
+    <p>Name: {{data.name | uppercase }}</p>
+    <p>Country: {{data.destCountry | uppercase }}</p>
+    <p>Date of start: {{data.startDate | date}}</p>
+    <p>Date of end: {{data.endDate | date}}</p>
+    <div class="trip__raiting__container">
+        <p>Rating:</p>
+        <div class="trip__raiting">
+            <app-trip-raiting [reviews]=data.reviews [tripId]="data.id"></app-trip-raiting>
+        </div>
+    </div>
+
+
+
+    <hr class="line">
+    <p class="price">{{data.price | currency }}</p>
+
+    <div class="trip__reservation" *ngIf="data.availableTrips > 0">
+        <div class="reservation__holder noselect"><div class="reservation__button reservation__button--subtract" [ngClass]="{'hidden': data.amount <= 0 }" (click)="subtractTrip()" (click)="addToCart()" *ngIf="this.authService.isUser()">-</div></div>
+        <div class="reservation__number noselect" [ngClass]="{'lowTripsLeft': tripsLeft() <= 3}">{{data.amount}}</div>
+        <div class="reservation__holder noselect"><div class="reservation__button reservation__button--add" [ngClass]="{'hidden': data.amount >= data.availableTrips }" (click)="addTrip()" (click)="addToCart()" *ngIf="this.authService.isUser()">+</div></div>
+    </div>
+    <div class="trip__reservation" *ngIf="data.availableTrips == 0">
+        <div class="reservation__number noselect nostock">Trip out of stock</div>
+    </div>
+
+</div>
+
+<!-- <div class="trip__delete" (click)="deleteTrip()"><i class="fa-solid fa-x"></i></div> -->

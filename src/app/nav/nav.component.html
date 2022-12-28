@@ -1,0 +1,44 @@
+<div class="nav__container">
+    <div class="nav__logo" (click)="logUser()">
+        TripsShop
+    </div>
+    <div class="nav__control">
+        <div class="nav__control__element" routerLink="/home" routerLinkActive="active">Home</div>
+        <div class="nav__control__element" routerLink="/trips" routerLinkActive="active">Trips</div>
+        <div class="nav__control__element" routerLink="/manage" routerLinkActive="active" *ngIf="authService.isManager() || authService.isAdmin()">Manage</div>
+        <div class="nav__control__element" routerLink="/admin" routerLinkActive="active" *ngIf="authService.isAdmin()">Admin</div>
+
+        <div class="lines">
+            <input class="lines__button" type="checkbox" [checked]="checked" (click)="changeCheckState()">
+                <div class="mobile-nav__container">
+                    <div class="fake-header"></div>
+                    <nav class="mobile-nav">
+                        <div class="mobile-nav__element" routerLink="/home" routerLinkActive="active" (click)="changeCheckState()">Home</div>
+                        <div class="mobile-nav__element" routerLink="/trips" routerLinkActive="active" (click)="changeCheckState()">Trips</div>
+                        <div class="mobile-nav__element" routerLink="/manage" routerLinkActive="active" *ngIf="authService.isManager() || authService.isAdmin()">Manage</div>
+                        <div class="nav__control__element" routerLink="/admin" routerLinkActive="active" *ngIf="authService.isAdmin()">Admin</div>
+                    </nav>
+                    
+                </div>
+
+                <div class="lines__element"></div>
+                <div class="lines__element"></div>
+                <div class="lines__element"></div>
+        </div>
+    </div>
+    <div class="nav__btns">
+        <div class="btn btn--user" *ngIf="this.authService.isLoggedIn()">
+            <div class="userExpand">
+                <div class="userExpand__element special">Welcome back {{userData?.name}}</div>
+                <div class="userExpand__element" routerLink="/history" routerLinkActive="active">Purchase history</div>
+                <div class="userExpand__element" (click)="logout()">Logout</div>
+            </div>
+            <i class="fa-solid fa-user"></i>
+         </div>
+        <div class="btn btn--notification" *ngIf="this.authService.isLoggedIn()"><i class="fa-solid fa-bell"></i></div>
+        <app-cart routerLink="/cart" class="btn--cart" *ngIf="this.authService.isLoggedIn()"></app-cart>
+
+        <div class="btn btn--login" *ngIf="!this.authService.isLoggedIn()" routerLink="/login" routerLinkActive="active">Login</div>
+        <div class="btn btn--register" *ngIf="!this.authService.isLoggedIn()" routerLink="/register" routerLinkActive="active">Register</div>
+    </div>
+</div>

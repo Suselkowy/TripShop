@@ -1,0 +1,65 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+
+    padding: 1rem;
+}
+.bigText{
+    font-size: 2rem;
+    margin: 0;
+}
+
+input{
+    border-radius: 5px;
+    border: 1px var(--color-outline) solid;
+    padding: 0.5rem;
+}
+
+.gray{
+    color:#ccc;
+}
+
+
+.black{
+    color: black;
+}
+
+.form__element{
+    margin-bottom: 1rem;
+}
+
+.form__element label{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+#destCountry{
+    width: calc(100% - 2rem);
+}
+
+.dual-input{
+    width: calc(30%);
+}
+
+.form__element--price{
+    display: flex;
+    flex-direction: column;
+}
+
+.period{
+    margin: 0 0.5rem;
+}
+
+.rating{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input[type="checkbox"]{
+    border: none;
+    padding: 1rem;
+}

@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: auto;
+}
+.rate > input {
+    display: none;
+}
+.rate > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    font-size:30px;
+}
+.rate > label:before {
+    content: '★ ';
+}
+
+.gray{
+    color:#ccc;
+}
+
+
+.black{
+    color: black;
+}
+
+.yellow{
+    color: var(--color-yellow-darker);
+}
+
+.yellowish{
+    color: #808000;
+}
+
+.star__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+
+}

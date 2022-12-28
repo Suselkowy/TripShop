@@ -1,0 +1,47 @@
+.user-list{
+    padding: 1rem;
+}
+
+.user__element{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+.user__element__single{
+    text-align: center;
+    width: calc(100% - 40px - 100px*5);
+    min-width: 100px;
+}
+
+.user__element__single--email{
+    min-width: 200px;
+}
+
+.user__element--header{
+    font-weight: 600;
+}
+
+
+
+
+.btn{
+    border-radius: 10px;
+    margin: 0 5px;
+    box-sizing: border-box;
+}
+
+.btn--delete{
+    background: var(--gradient-red);
+}
+
+.btn--edit{
+    background: var(--gradient-yellow);
+}
+
+.true{
+    color: var(--color-green);
+}
+
+.false{
+    color: var(--color-red);
+}

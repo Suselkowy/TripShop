@@ -1,0 +1,14 @@
+<div class="trip-list">
+    <div *ngFor="let trip of trips" class="trip__element">
+        <div class="trip__element__single trip__element__single--id">{{trip.id}}</div>
+        <div class="trip__element__single trip__element__single--name">{{trip.name}}</div>
+        <div class="trip__element__single trip__element__single--destCountry">{{trip.destCountry}}</div>
+        <div class="trip__element__single trip__element__single--price"> {{trip.price}}</div>
+        <div class="trip__element__single trip__element__single--startDate">{{trip.startDate}}</div>
+        <div class="trip__element__single trip__element__single--endDate">{{trip.endDate}}</div>
+        <div class="trip__element__single trip__element__single--availableTrips">{{trip.availableTrips}} </div>
+        <div class="trip__element__single btn btn--delete" (click)="removeTrip(trip)">Delete</div>
+        <div class="trip__element__single btn btn--edit" routerLink="/edit/{{trip.id}}" routerLinkActive="active">Edit</div>
+    </div>
+</div>
+<app-trip-form></app-trip-form>
