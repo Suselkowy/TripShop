@@ -90,7 +90,7 @@ export class TripReviewComponent implements OnInit {
       return
     }
     if(this.authService.isBanned()) return;
-    if(this._cartService.getHistory().filter(position => position.user === this.authService.userAuthData.uid).length <= 0) return;
+    if(this._cartService.getHistory().filter(position => position.user === this.authService.userAuthData.uid && position.id == this.tripId).length <= 0) return;
     if(this.reviews.filter(review => review.user === this.userData.name).length > 0) return;
     this.available = true;
   }

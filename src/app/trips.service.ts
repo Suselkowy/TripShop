@@ -52,7 +52,8 @@ export class TripsService{
   constructor(private http: HttpClient, private firestore: AngularFirestore) {
     // this.data = http.get(this.url);
     this.items = firestore.collection<any>('Trips').snapshotChanges();
-    this.reviews = [{"tripId":1,"raiting":5, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":1, "raiting":2, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":1,"raiting":3, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":2,"raiting":3, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":3,"raiting":5, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":3,"raiting":5, "comment":"","user":"admin","buyDate":"2022-12-03"},{"tripId":3,"raiting":5, "comment":"", "user":"admin","buyDate":"2022-12-03"}];
+    this.firestore.collection<Review>('Reviews').valueChanges().subscribe(reviews => this.reviews = reviews);
+    //this.reviews = [{"tripId":1, "raiting":2, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":1,"raiting":3, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":2,"raiting":3, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":3,"raiting":5, "comment":"", "user":"admin","buyDate":"2022-12-03"},{"tripId":3,"raiting":5, "comment":"","user":"admin","buyDate":"2022-12-03"},{"tripId":3,"raiting":5, "comment":"", "user":"admin","buyDate":"2022-12-03"}];
   }
 
   addData(trip: tripInfoAdd){
@@ -93,11 +94,13 @@ export class TripsService{
   }
 
   addReview(review: Review){
-    this.reviews.push(review)
+    this.firestore.collection("Reviews").add(review);
+    console.log(review);
+    //this.reviews.push(review);
   }
 
   getReview(id:number){
-    return this.reviews.filter(review => review.tripId == id)
+    return this.reviews.filter(review => review.tripId == id);
   }
   
 }

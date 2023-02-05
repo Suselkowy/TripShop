@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../cart.service';
-import { firestoreData } from '../trips-container/trips-container.component';
+import { firestoreSnapshotData } from '../interfaces';
 import { Review, tripInfo, TripsService } from '../trips.service';
 
 @Component({
@@ -33,7 +33,7 @@ export class TripDetailComponent implements OnInit {
   ngOnInit(): void {
     this.tripId =  this.route.snapshot.paramMap.get('id');
     this._tripsService.getData().subscribe(data => {
-      this.data = data.map( (trip: firestoreData) => ({...trip.payload.doc.data(),key:trip.payload.doc.id, "amount":this._cartService.getAmountOfItem(trip.payload.doc.data().id), "reviews":this._tripsService.getReview(Number(trip.payload.doc.data().id))})).filter((trip:tripInfo) => String(trip.id) == (this.tripId || ""))[0]
+      this.data = data.map( (trip: firestoreSnapshotData) => ({...trip.payload.doc.data(),key:trip.payload.doc.id, "amount":this._cartService.getAmountOfItem(trip.payload.doc.data().id), "reviews":this._tripsService.getReview(Number(trip.payload.doc.data().id))})).filter((trip:tripInfo) => String(trip.id) == (this.tripId || ""))[0]
     });
   }
 

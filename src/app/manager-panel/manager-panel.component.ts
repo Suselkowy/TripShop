@@ -21,8 +21,7 @@ export class ManagerPanelComponent implements OnInit {
   }
 
   removeTrip(trip:tripInfo){
-    //TODO: Uncomment this
-    //this._tripsService.deleteData(trip.key);
+    this._tripsService.deleteData(trip.key);
   }
 
   editTrip(trip:tripInfo){

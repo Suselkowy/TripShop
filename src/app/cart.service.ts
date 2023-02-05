@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from './auth.service';
-import { tripInfo, tripInfoHistory } from './trips.service';
+import { tripInfo, tripInfoHistory, TripsService } from './trips.service';
 
 
 
@@ -11,7 +12,15 @@ export class CartService {
   items: tripInfo[] = [];
 
   history: tripInfoHistory[] = []
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private firestore: AngularFirestore) {
+    this.authService.currUserId.subscribe(res =>{
+      if(res.id != ""){
+        this.firestore.collection<tripInfoHistory>("History",  ref => ref.where('user', "==", res.id)).valueChanges().subscribe(
+          data => this.history = data
+        );
+      }
+    })
+   }
 
   addToCart(product: tripInfo) {
     let present: tripInfo[] = this.items.filter(item => item.id == product.id);
@@ -66,7 +75,8 @@ export class CartService {
     let now = new Date();
 
     let newTrip = {...trip, buyDate:`${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()}`, user:this.authService.userAuthData.uid}
-    this.history.push(newTrip);
+
+    this.firestore.collection("History").add(newTrip);
   }
 
   getHistory(){

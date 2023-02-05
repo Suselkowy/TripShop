@@ -29,8 +29,8 @@ export class AdminPanelComponent implements OnInit {
   users:UserWithID[] = [];
 
   constructor(private authService: AuthService) { 
-    this.authService.getUsers().subscribe((data) => {
-      this.users = data.map((user:firestoreUser) =>({...user.payload.doc.data(), key:user.payload.doc.id}));
+    this.authService.getUsers().subscribe( res => {
+      this.users = res.map((user:firestoreUser) =>({...user.payload.doc.data(), key:user.payload.doc.id}));
     })
   }
 

@@ -18,7 +18,6 @@ import { TripsService } from './trips.service';
 import { TripFormComponent } from './trip-form/trip-form.component';
 import { TripRaitingComponent } from './trip-raiting/trip-raiting.component';
 import { TripFilterComponent } from './trip-filter/trip-filter.component';
-import { CountryPipe, DatePipe, PricePipe, RaitingPipe } from './trip-filter/trip-filter.component';
 import { CartService } from './cart.service';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
@@ -44,10 +43,6 @@ import { PermissionsEditComponent } from './permissions-edit/permissions-edit.co
     TripFormComponent,
     TripRaitingComponent,
     TripFilterComponent,
-    CountryPipe,
-    DatePipe, 
-    PricePipe,
-    RaitingPipe,
     HistoryPipe,
     CartComponent,
     HomeComponent,

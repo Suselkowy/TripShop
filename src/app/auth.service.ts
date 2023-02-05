@@ -12,7 +12,7 @@ import { User } from './register/register.component';
 export class AuthService {
 
   persistence: string = 'local';
-  public userAuthData: any;
+  userAuthData: any;
   userData: any;
   items: Observable<any>;
 
@@ -22,15 +22,24 @@ export class AuthService {
     parmissions: "0000"
   });
 
+  public currUserId = new BehaviorSubject<any>({
+    id: ""
+  });
+
   constructor(private angularFireAuth: AngularFireAuth, private firestore: AngularFirestore,private router: Router) {
     angularFireAuth.authState.subscribe(res => {
       this.userAuthData = res;
       this.firestore.collection("Users").doc(res?.uid).valueChanges().subscribe(data => {
         this.userData = data;
+        this.currUserId.next({"id":res?.uid})
         this.currUser.next(data);
       });
     });
     this.items = firestore.collection<any>('Users').snapshotChanges();
+  }
+
+  getUserId(){
+    return this.currUserId;
   }
 
   getUsers(){

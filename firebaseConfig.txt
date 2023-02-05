@@ -1,5 +1,13 @@
 service cloud.firestore {
   match /databases/{database}/documents {
+  match /Reviews/{document} {
+  	allow read: if true;
+    allow write: if true;
+   }
+     match /History/{document} {
+  	allow read: if true;
+    allow write: if true;
+   }
     match /{document=**} {
       allow read: if true;
       allow write: if get(/databases/$(database)/documents/Users/$(request.auth.uid)).data.permissions[1] == "1";

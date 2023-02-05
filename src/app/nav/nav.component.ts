@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { TripsService } from '../trips.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(public authService : AuthService) {
+  constructor(public authService : AuthService, private tripService:TripsService) {
     authService.getUserData().subscribe(data => this.userData = data);
    }
 
@@ -30,6 +31,5 @@ export class NavComponent implements OnInit {
   logUser(){
     console.log(this.authService.isLoggedIn());
     console.log(this.userData);
-    this.authService.log();
   }
 }

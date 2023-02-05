@@ -1,0 +1,3 @@
+user@tripshop.com Qwerty1@
+manager@tripshop.com Qwerty1@
+admin@tripshop.com Qwerty1@
