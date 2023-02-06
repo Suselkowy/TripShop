@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { tripHistoryDatabase } from './interfaces';
 import { tripInfo, tripInfoHistory, TripsService } from './trips.service';
 
 
@@ -11,7 +12,7 @@ import { tripInfo, tripInfoHistory, TripsService } from './trips.service';
 })
 export class CartService {
   items: tripInfo[] = [];
-  private history: BehaviorSubject<tripInfoHistory[]>;
+  private history: BehaviorSubject<tripHistoryDatabase[]>;
 
   currUserKey: string = ""; 
 
@@ -20,16 +21,19 @@ export class CartService {
 
   constructor(private authService:AuthService, private firestore: AngularFirestore) {
     this.sumOfQuantity = new BehaviorSubject<number>(0);
-    this.history = new BehaviorSubject<tripInfoHistory[]>([]);
+    this.history = new BehaviorSubject<tripHistoryDatabase[]>([]);
     try{
       this.authService.currUserId.subscribe(res =>{
         this.currUserKey = res.id;
         if(this.currUserKey == ""){
           throw Error("User not found")
         }
-
-        let tempHist = this.firestore.collection<tripInfoHistory>("History",  ref => ref.where('user', "==", this.currUserKey)).valueChanges()
-        tempHist.subscribe(hist => this.history.next(hist))
+        let tempHist = this.firestore.collection<tripHistoryDatabase>("History",  ref => ref.where('user', "==", this.currUserKey)).valueChanges()
+        tempHist.subscribe(hist => {
+          if(this.currUserKey == "" || this.currUserKey == undefined){
+            throw Error("User not found")
+          }
+          this.history.next(hist)})
       })
     }catch(e){
       if(e instanceof Error){
@@ -98,11 +102,16 @@ export class CartService {
   buyTrip(trip: tripInfo){
     let now = new Date();
 
-    let newTrip = {...trip, buyDate:`${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()}`, user:this.authService.userAuthData.uid}
+    let boughtTrip = {
+      tripId: trip.id,
+      amount: trip.amount,
+      buyPrice: trip.price,
+      buyDate:`${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()}`, 
+      user:this.authService.userAuthData.uid}
 
-    this.firestore.collection("History").add(newTrip);
-
+    this.firestore.collection("History").add(boughtTrip);
     this.deleteFromCart(trip);
+
   }
 
   getHistory(){
@@ -122,7 +131,7 @@ export class CartService {
   }
 
   UserBoughtTrip(tripId:number){
-    return this.history.getValue().filter(position => position.user === this.authService.userAuthData.uid && position.id == tripId).length <= 0
+    return this.history.getValue().filter(position => position.user === this.authService.userAuthData.uid && position.tripId == tripId).length <= 0
   }
 }
 

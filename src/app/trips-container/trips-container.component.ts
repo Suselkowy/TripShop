@@ -35,17 +35,21 @@ export class TripsContainerComponent implements OnInit {
   public filteredTrips:tripInfo[] = [];
 
   constructor(private _tripsService: TripsService, private _cartService: CartService, public authService: AuthService)
-  { }
+  { 
+    console.log("const");
+  }
 
   ngOnInit(): void {
     this._tripsService.getData().subscribe(data => {
       this.trips = data.map( (trip: firestoreSnapshotData) => ({...trip.payload.doc.data(),
         key:trip.payload.doc.id,
         "amount":this._cartService.getAmountOfItem(trip.payload.doc.data().id), 
-        "reviews":this._tripsService.getReview(Number(trip.payload.doc.data().id))}))
+        "reviews":this._tripsService.getReview(Number(trip.payload.doc.data().id))
+      }) )
       this.filteredTrips = this.trips;
     });
     this._cartService.getSumOfQuantity2().subscribe(sumOfQuanitity => this.sumAmount = sumOfQuanitity)
+    console.log("init");
   }
 
   //filter functionality

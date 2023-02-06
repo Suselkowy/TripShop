@@ -18,3 +18,17 @@ export interface firestoreSnapshotData{
         }
     }
 }
+
+export interface tripHistoryDatabase{
+    tripId: number,
+    amount: number,
+    buyPrice: number,
+    buyDate: string,
+    user:string
+  }
+
+  export interface tripHistory extends tripHistoryDatabase{
+    startDate:string,
+    endDate:string,
+    name:string
+  }

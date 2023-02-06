@@ -1,6 +1,11 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { CartService } from '../cart.service';
-import { tripInfoHistory } from '../trips.service';
+import { firestoreSnapshotData, tripHistory } from '../interfaces';
+import { tripInfoHistory, TripsService } from '../trips.service';
+
+
+
 
 @Component({
   selector: 'app-history',
@@ -9,13 +14,36 @@ import { tripInfoHistory } from '../trips.service';
 })
 export class HistoryComponent implements OnInit {
 
-  history: tripInfoHistory[] = [];
+  history: tripHistory[] = [];
   status: string = ""
 
-  constructor(private _cartService: CartService) {
+  constructor(private _cartService: CartService, private _tripService: TripsService) {
     try{
       this._cartService.getHistory().subscribe(history =>{
-        this.history = history
+        this.history = []
+        for(let i = 0; i < history.length; ++i){
+          this.history.push({...history[i], startDate:"", endDate:"", name:""})
+
+          this._tripService.getTrip(Number(history[i].tripId)).subscribe(
+            data => {
+              let temp = data.map( (trip: firestoreSnapshotData) => ({
+              ...trip.payload.doc.data(),
+              key:trip.payload.doc.id, 
+              "amount":0, 
+              "reviews":[]})
+              )[0]
+              let currHist = this.history.filter(hist => hist.tripId == temp.id)
+              if(currHist.length > 0){
+                currHist.forEach(hist => {
+                  hist.startDate = temp.startDate;
+                  hist.endDate = temp.endDate;
+                  hist.name = temp.name;
+                })
+              }
+            }
+          )
+        }
+        console.log(this.history);
       }) 
     }catch(e){
       if(e instanceof Error){
@@ -54,7 +82,7 @@ export class HistoryPipe implements PipeTransform {
     return "active"
   }
 
-  transform(trips: tripInfoHistory[], status:string): tripInfoHistory[] {
+  transform(trips: tripHistory[], status:string): tripHistory[] {
     if (!trips)
     {
       return [];

@@ -13,10 +13,10 @@
     <div class="label__status">Status</div>
 </div>
 <div *ngFor="let item of (history | historyPipe : status)" class="item">
-    <div class="price">{{item.price}}</div>
+    <div class="price">{{item.buyPrice}}</div>
     <div class="startDate">{{item.startDate}}</div>
     <div class="endDate">{{item.endDate}}</div>
-    <div class="destCountry">{{item.destCountry}}</div>
+    <div class="name">{{item.name}}</div>
     <div class="amount">{{item.amount}}</div>
     <div class="status"><span [ngClass]="{'red': getStatus(item.startDate, item.endDate) == 'finished', 'green': getStatus(item.startDate, item.endDate) == 'active', 'yellow': getStatus(item.startDate, item.endDate) == 'coming up' }">{{getStatus(item.startDate, item.endDate)}}</span></div>
 </div>

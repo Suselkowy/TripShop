@@ -45,7 +45,7 @@ export class TripDetailComponent implements OnInit {
         if(this.trip.id == -1){
           throw new Error("Trip not found")
         }
-        this._tripsService.getReviews(this.trip.id).subscribe(data => {
+        this._tripsService.getReviewsSingleTrip(this.trip.id).subscribe(data => {
           this.trip.reviews =  data.map( raw => raw.payload.doc.data() )
         })
       });

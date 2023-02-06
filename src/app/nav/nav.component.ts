@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { TripsService } from '../trips.service';
 
@@ -9,8 +10,8 @@ import { TripsService } from '../trips.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(public authService : AuthService, private tripService:TripsService) {
-    authService.getUserData().subscribe(data => this.userData = data);
+  constructor(public authService : AuthService, private router: Router) {
+    this.authService.getUserData().subscribe(data => this.userData = data);
    }
 
   checked: boolean = false;
@@ -25,6 +26,7 @@ export class NavComponent implements OnInit {
 
   logout(){
     this.authService.signOut();
+    this.router.navigate(['/home']);
   }
 
   
