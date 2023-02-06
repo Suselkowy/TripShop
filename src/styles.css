@@ -12,6 +12,15 @@
     --color-outline: rgb(164, 164, 164, 0.5);
 }
 
+.gray{
+    color:#ccc;
+}
+
+
+.black{
+    color: black;
+}
+
 p{
     margin: 0;
     padding: 0;

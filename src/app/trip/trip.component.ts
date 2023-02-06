@@ -10,7 +10,6 @@ import { tripInfo, TripsService } from '../trips.service';
 })
 export class TripComponent implements OnInit {
 
-  @Output() sumAmountChanged = new EventEmitter<number>();
   @Output() removeTrip = new EventEmitter<tripInfo>();
 
   @Input("data") data:tripInfo = { 
@@ -39,7 +38,6 @@ export class TripComponent implements OnInit {
 
     if(this.data.amount < this.data.availableTrips){
       this.data.amount += 1;
-      this.sumAmountChanged.emit(1);
     }
   
   }
@@ -47,7 +45,6 @@ export class TripComponent implements OnInit {
   subtractTrip(step = -1){
     if(this.data.amount > 0){
       this.data.amount -= 1;
-      this.sumAmountChanged.emit(step);
     }
   }
 

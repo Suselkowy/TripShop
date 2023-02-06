@@ -4,27 +4,12 @@
     justify-content: center;
     align-items: center;
     height: fit-content;
-
     padding: 1rem;
 }
-.bigText{
+
+.header{
     font-size: 2rem;
     margin: 0;
-}
-
-input{
-    border-radius: 5px;
-    border: 1px var(--color-outline) solid;
-    padding: 0.5rem;
-}
-
-.gray{
-    color:#ccc;
-}
-
-
-.black{
-    color: black;
 }
 
 .form__element{
@@ -36,21 +21,26 @@ input{
     font-size: 1.2rem;
 }
 
-#destCountry{
-    width: calc(100% - 2rem);
+input{
+    border-radius: 5px;
+    border: 1px var(--color-outline) solid;
+    padding: 0.5rem;
+    box-sizing: border-box;
 }
 
 .dual-input{
-    width: calc(30%);
-}
-
-.form__element--price{
-    display: flex;
-    flex-direction: column;
+    width: calc(50% - 5px - 0.15rem);
 }
 
 .period{
-    margin: 0 0.5rem;
+    display: inline-block; 
+    width: 10px;
+    margin: 0 0.15rem;
+    text-align: center;
+}
+
+.single-input{
+    width: 100%;
 }
 
 .rating{

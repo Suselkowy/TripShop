@@ -40,26 +40,17 @@ export class TripsContainerComponent implements OnInit {
   ngOnInit(): void {
     this._tripsService.getData().subscribe(data => {
       this.trips = data.map( (trip: firestoreSnapshotData) => ({...trip.payload.doc.data(),
-        key:trip.payload.doc.id, 
+        key:trip.payload.doc.id,
         "amount":this._cartService.getAmountOfItem(trip.payload.doc.data().id), 
         "reviews":this._tripsService.getReview(Number(trip.payload.doc.data().id))}))
       this.filteredTrips = this.trips;
     });
-    this.getSumAmount();
+    this._cartService.getSumOfQuantity2().subscribe(sumOfQuanitity => this.sumAmount = sumOfQuanitity)
   }
 
   //filter functionality
   filterTrips(filteredTrips:tripInfo[]){
     this.filteredTrips = filteredTrips;
-  }
-
-  //Sum of quantity of trips
-  changeSumAmount(num: number):void{
-    this.sumAmount += num;
-  }
-
-  getSumAmount():void{
-    this.sumAmount = this._cartService.getSumOfQuantity();
   }
 
   //max and min price

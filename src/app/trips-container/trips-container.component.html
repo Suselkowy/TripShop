@@ -4,7 +4,7 @@
         <app-trip-filter (filteredTrips)="filterTrips($event)" [trips]="trips"></app-trip-filter>
     </div>
     <div class="trips__container">
-        <app-trip *ngFor="let trip of filteredTrips" [data]=trip (sumAmountChanged)="changeSumAmount($event)"
+        <app-trip *ngFor="let trip of filteredTrips" [data]="trip"
         [ngClass]="{'minPrice': trip.price == getMinPrice(filteredTrips), 'maxPrice': trip.price == getMaxPrice(filteredTrips)}"></app-trip>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </div>

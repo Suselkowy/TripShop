@@ -30,11 +30,9 @@ export class TripReviewComponent implements OnInit {
 
   @Input("tripId") tripId:number = 0;
   @Input("reviews") reviews:Review[] = []
-  @Output() addReviewParent = new EventEmitter<Review>();
 
   tempCurrUser:string = "admin";
   userData: any = null;
-  items: tripInfoHistory[] = this._cartService.getHistory();
   available: boolean = false;
 
   rated:number = 0;
@@ -85,13 +83,14 @@ export class TripReviewComponent implements OnInit {
   }
 
   checkIfAvilableForReview(){
+    this.available = false;
     if(this.authService.isAdmin() || this.authService.isManager()){
       this.available = true;
       return
     }
     if(this.authService.isBanned()) return;
-    if(this._cartService.getHistory().filter(position => position.user === this.authService.userAuthData.uid && position.id == this.tripId).length <= 0) return;
-    if(this.reviews.filter(review => review.user === this.userData.name).length > 0) return;
+    if(this._cartService.UserBoughtTrip(this.tripId)) return;
+    if(this.reviews.filter(review => review.user == this.userData.name).length > 0) return;
     this.available = true;
   }
 
@@ -126,7 +125,6 @@ export class TripReviewComponent implements OnInit {
       "buyDate":this.reviewForm.get("buyDate")?.value || ""
     };
 
-    this.addReviewParent.emit(newReview);
     this._tripsService.addReview(newReview);
 
     this.reviewForm.reset();

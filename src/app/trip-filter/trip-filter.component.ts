@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Pipe, PipeTransform } from '@angular/core';
 import { tripInfo } from '../trips.service';
 import { searchArgs } from '../interfaces';
 import { CountryPipe, DatePipe, PricePipe, RaitingPipe } from '../pipes';
@@ -45,7 +44,7 @@ export class TripFilterComponent implements OnInit,OnChanges {
       "raiting--5":'',
       "raiting--0":'',
     });
-    this.onChanges();
+    this.subscribeFilterFields();
   }
 
   //emiter
@@ -59,18 +58,23 @@ export class TripFilterComponent implements OnInit,OnChanges {
   }
 
   //On field change
-  onChanges(): void {
+  subscribeFilterFields(): void {
     this.filterForm.get('destCountry')?.valueChanges.subscribe(val => {this.searchArgs['destCountry']=val; this.emitFilteredTrips();});
     this.filterForm.get('minPrice')?.valueChanges.subscribe(val => {this.searchArgs['minPrice']=val;this.emitFilteredTrips();});
     this.filterForm.get('maxPrice')?.valueChanges.subscribe(val => {this.searchArgs['maxPrice']=val; this.emitFilteredTrips();});
     this.filterForm.get('startDate')?.valueChanges.subscribe(val => {this.searchArgs['startDate']=val; this.emitFilteredTrips();});
     this.filterForm.get('endDate')?.valueChanges.subscribe(val => {this.searchArgs['endDate']=val; this.emitFilteredTrips();});
-    this.filterForm.get('raiting--0')?.valueChanges.subscribe(val => {val ? this.searchArgs['raiting'] = [...this.searchArgs['raiting'],"0"] : this.searchArgs['raiting']= this.searchArgs['raiting'].filter(a => a != "0");this.emitFilteredTrips();});
-    this.filterForm.get('raiting--1')?.valueChanges.subscribe(val => {val ? this.searchArgs['raiting'] = [...this.searchArgs['raiting'],"1"] : this.searchArgs['raiting']= this.searchArgs['raiting'].filter(a => a != "1");this.emitFilteredTrips();});
-    this.filterForm.get('raiting--2')?.valueChanges.subscribe(val => {val ? this.searchArgs['raiting'] = [...this.searchArgs['raiting'],"2"] : this.searchArgs['raiting']= this.searchArgs['raiting'].filter(a => a != "2");this.emitFilteredTrips();});
-    this.filterForm.get('raiting--3')?.valueChanges.subscribe(val => {val ? this.searchArgs['raiting'] = [...this.searchArgs['raiting'],"3"] : this.searchArgs['raiting']= this.searchArgs['raiting'].filter(a => a != "3");this.emitFilteredTrips();});
-    this.filterForm.get('raiting--4')?.valueChanges.subscribe(val => {val ? this.searchArgs['raiting'] = [...this.searchArgs['raiting'],"4"] : this.searchArgs['raiting']= this.searchArgs['raiting'].filter(a => a != "4");this.emitFilteredTrips();});
-    this.filterForm.get('raiting--5')?.valueChanges.subscribe(val => {val ? this.searchArgs['raiting'] = [...this.searchArgs['raiting'],"5"] : this.searchArgs['raiting']= this.searchArgs['raiting'].filter(a => a != "5");this.emitFilteredTrips();});
+    
+    this.filterForm.get('raiting--0')?.valueChanges.subscribe(ischecked => {this.checkboxHandler(ischecked,"0");this.emitFilteredTrips();});
+    this.filterForm.get('raiting--1')?.valueChanges.subscribe(ischecked => {this.checkboxHandler(ischecked,"1");this.emitFilteredTrips();});
+    this.filterForm.get('raiting--2')?.valueChanges.subscribe(ischecked => {this.checkboxHandler(ischecked,"2");this.emitFilteredTrips();});
+    this.filterForm.get('raiting--3')?.valueChanges.subscribe(ischecked => {this.checkboxHandler(ischecked,"3");this.emitFilteredTrips();});
+    this.filterForm.get('raiting--4')?.valueChanges.subscribe(ischecked => {this.checkboxHandler(ischecked,"4");this.emitFilteredTrips();});
+    this.filterForm.get('raiting--5')?.valueChanges.subscribe(ischecked => {this.checkboxHandler(ischecked,"5");this.emitFilteredTrips();});
+  }
+
+  checkboxHandler(ischecked:number, val:string){
+    ischecked ? this.searchArgs['raiting'] = [...this.searchArgs['raiting'],val] : this.searchArgs['raiting']= this.searchArgs['raiting'].filter(a => a != val)
   }
 
   filterTrips(trips:tripInfo[], searchArgs:searchArgs){

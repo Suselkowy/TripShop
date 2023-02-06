@@ -31,7 +31,8 @@ const routes: Routes = [
   { path: 'cart', component: DetailedCartComponent, canActivate:[AuthGuard]},
   { path: 'history', component: HistoryComponent, canActivate:[AuthGuard]},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent } 
+  {path:'error-404',  component: PageNotFoundComponent},
+  { path: '**',  redirectTo: '/error-404' } 
 ];
 
 @NgModule({

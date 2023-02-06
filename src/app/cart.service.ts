@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { tripInfo, tripInfoHistory, TripsService } from './trips.service';
 
@@ -10,16 +11,36 @@ import { tripInfo, tripInfoHistory, TripsService } from './trips.service';
 })
 export class CartService {
   items: tripInfo[] = [];
+  private history: BehaviorSubject<tripInfoHistory[]>;
 
-  history: tripInfoHistory[] = []
+  currUserKey: string = ""; 
+
+  private sumOfQuantity: BehaviorSubject<number>;
+
+
   constructor(private authService:AuthService, private firestore: AngularFirestore) {
-    this.authService.currUserId.subscribe(res =>{
-      if(res.id != ""){
-        this.firestore.collection<tripInfoHistory>("History",  ref => ref.where('user', "==", res.id)).valueChanges().subscribe(
-          data => this.history = data
-        );
+    this.sumOfQuantity = new BehaviorSubject<number>(0);
+    this.history = new BehaviorSubject<tripInfoHistory[]>([]);
+    try{
+      this.authService.currUserId.subscribe(res =>{
+        this.currUserKey = res.id;
+        if(this.currUserKey == ""){
+          throw Error("User not found")
+        }
+
+        let tempHist = this.firestore.collection<tripInfoHistory>("History",  ref => ref.where('user', "==", this.currUserKey)).valueChanges()
+        tempHist.subscribe(hist => this.history.next(hist))
+      })
+    }catch(e){
+      if(e instanceof Error){
+        if(e instanceof Error){
+          console.log(e.message);
+        }else{
+          console.log("Error occured");
+        }
+        throw e;
       }
-    })
+    }
    }
 
   addToCart(product: tripInfo) {
@@ -34,14 +55,15 @@ export class CartService {
       if(product.amount > 0){
         this.items.push(product);
       }
-
     }
+
+    this.sumOfQuantity.next(this.items.reduce((acc, tripElement: tripInfo) => (tripElement.amount) + acc, 0))
 
   }
 
   deleteFromCart(product: tripInfo){
-    let present: tripInfo[] = this.items.filter(item => item.id == product.id);
-    this.items.splice(this.items.indexOf(present[0]),1)
+    product.amount = 0;
+    this.addToCart(product);
   }
 
   getItems() {
@@ -69,18 +91,38 @@ export class CartService {
     return this.items.reduce((acc, tripElement: tripInfo) => (tripElement.amount) + acc, 0);
   }
 
-  buyTrip(trip: tripInfo){
-    this.deleteFromCart(trip);
+  getSumOfQuantity2():Observable<number>{
+    return this.sumOfQuantity.asObservable()
+  }
 
+  buyTrip(trip: tripInfo){
     let now = new Date();
 
     let newTrip = {...trip, buyDate:`${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()}`, user:this.authService.userAuthData.uid}
 
     this.firestore.collection("History").add(newTrip);
+
+    this.deleteFromCart(trip);
   }
 
   getHistory(){
-    return this.history;
+    try{
+      if(this.currUserKey == ""){
+        throw Error("User not found")
+      }
+      return this.history.asObservable();
+    }catch(e){
+      if(e instanceof Error){
+        console.log(e.message);
+      }else{
+        console.log("Error occured");
+      }
+      throw e;
+    }
+  }
+
+  UserBoughtTrip(tripId:number){
+    return this.history.getValue().filter(position => position.user === this.authService.userAuthData.uid && position.id == tripId).length <= 0
   }
 }
 

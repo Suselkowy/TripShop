@@ -12,7 +12,7 @@
     <div class="label__amount">Amount</div>
     <div class="label__status">Status</div>
 </div>
-<div *ngFor="let item of (items | historyPipe : status)" class="item">
+<div *ngFor="let item of (history | historyPipe : status)" class="item">
     <div class="price">{{item.price}}</div>
     <div class="startDate">{{item.startDate}}</div>
     <div class="endDate">{{item.endDate}}</div>

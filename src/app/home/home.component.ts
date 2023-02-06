@@ -11,7 +11,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  lat = 51.678418;
-  lng = 7.809007;
 
 }

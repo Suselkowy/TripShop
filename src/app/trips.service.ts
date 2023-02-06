@@ -73,6 +73,14 @@ export class TripsService{
     return this.firestore.collection<any>('Trips', ref => ref.where('id' ,"==", id)).snapshotChanges();
   } 
 
+  getTripKey(key:string){
+    return this.firestore.collection<any>('Trips').doc(key).snapshotChanges();
+  }
+
+  getReviews(id:number){
+    return this.firestore.collection<any>('Reviews', ref => ref.where('tripId' ,"==", id)).snapshotChanges();
+  }
+
   deleteData(key:string){
     const daneRef = this.firestore.collection('Trips');
     daneRef.doc(key).delete();

@@ -1,6 +1,6 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { CartService } from '../cart.service';
-import { tripInfo, tripInfoHistory } from '../trips.service';
+import { tripInfoHistory } from '../trips.service';
 
 @Component({
   selector: 'app-history',
@@ -9,10 +9,22 @@ import { tripInfo, tripInfoHistory } from '../trips.service';
 })
 export class HistoryComponent implements OnInit {
 
-  items: tripInfoHistory[] = this._cartService.getHistory();
+  history: tripInfoHistory[] = [];
   status: string = ""
 
-  constructor(private _cartService: CartService) { 
+  constructor(private _cartService: CartService) {
+    try{
+      this._cartService.getHistory().subscribe(history =>{
+        this.history = history
+      }) 
+    }catch(e){
+      if(e instanceof Error){
+        alert(e.message)
+      }else{
+        alert("Unknown error occured. Try again later.")
+      }
+    }
+
   }
 
   ngOnInit(): void {

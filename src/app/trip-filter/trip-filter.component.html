@@ -1,22 +1,26 @@
-<p class="bigText">Filter</p>
+<p class="header">Filter</p>
 
 <form [formGroup]="filterForm">
-    <div class="form__element">
+    <div class="form__element form__element--destCountry">
         <label for="destCountry">Localization: </label>
-        <input id="destCountry" type="text" formControlName="destCountry">
+        <input id="destCountry" class="single-input" type="text" formControlName="destCountry">
     </div>
     
     <div class="form__element form__element--price">
         <label class="price__label">Price:</label>
-        <div><input id="minPrice" class="dual-input" type="text" formControlName="minPrice"><span class="period">-</span><input class="dual-input" id="maxPrice" type="text" formControlName="maxPrice"></div>
+        <div class="form_input_container--price">
+            <input id="minPrice" class="dual-input" type="text" formControlName="minPrice"><span class="period">-</span><input class="dual-input" id="maxPrice" type="text" formControlName="maxPrice">
+        </div>
     </div>
     
-    <div class="form__element form__element--price">
+    <div class="form__element form__element--date">
         <label>Date:</label>
-        <div><input id="startDate" type="date" class="dual-input" formControlName="startDate"> - <input id="endDate"  class="dual-input" type="date" formControlName="endDate"></div>
+        <div class="form_input_container--date">
+            <input id="startDate" type="date" class="dual-input" formControlName="startDate"><span class="period">-</span><input id="endDate"  class="dual-input" type="date" formControlName="endDate">
+        </div>
     </div>
     
-    <div class="form__element form__element--price">
+    <div class="form__element form__element--rating">
         <label for="rating">Rating:</label>
         <div class="rating">
         <div><input type="checkbox" value="0" id="radio--0" name="raiting" formControlName="raiting--0"><label for="radio--0"><span class="gray">★★★★★</span></label></div>
