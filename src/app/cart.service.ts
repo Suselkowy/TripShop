@@ -30,7 +30,7 @@ export class CartService {
           try{
             throw Error("User not found")
           }catch{
-            console.log("jajcujesz")
+            console.log("Yhm, i dont like this")
           }
 
         }
