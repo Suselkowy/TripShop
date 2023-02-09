@@ -2,10 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CartService } from '../cart.service';
 import { firestoreSnapshotData, tripHistory } from '../interfaces';
-import { tripInfoHistory, TripsService } from '../trips.service';
-
-
-
+import { TripsService } from '../trips.service';
 
 @Component({
   selector: 'app-history',
@@ -19,12 +16,12 @@ export class HistoryComponent implements OnInit {
 
   constructor(private _cartService: CartService, private _tripService: TripsService) {
     try{
-      this._cartService.getHistory().subscribe(history =>{
+      this._cartService.getHistory().subscribe(res =>{
         this.history = []
-        for(let i = 0; i < history.length; ++i){
-          this.history.push({...history[i], startDate:"", endDate:"", name:""})
+        for(let i = 0; i < res.length; ++i){
+          this.history.push({...res[i], startDate:"", endDate:"", name:""})
 
-          this._tripService.getTrip(Number(history[i].tripId)).subscribe(
+          this._tripService.getTrip(Number(res[i].tripId)).subscribe(
             data => {
               let temp = data.map( (trip: firestoreSnapshotData) => ({
               ...trip.payload.doc.data(),
@@ -43,8 +40,8 @@ export class HistoryComponent implements OnInit {
             }
           )
         }
-        console.log(this.history);
-      }) 
+      },
+      err => console.log('HTTP Error', err)) 
     }catch(e){
       if(e instanceof Error){
         alert(e.message)
@@ -74,29 +71,4 @@ export class HistoryComponent implements OnInit {
 
 }
 
-@Pipe({ name: 'historyPipe'})
-export class HistoryPipe implements PipeTransform {
-  getStatus(endDate: string, startDate: string){
-    if(new Date(endDate) < new Date()) return "finished"
-    if(new Date(startDate) > new Date()) return "coming up"
-    return "active"
-  }
 
-  transform(trips: tripHistory[], status:string): tripHistory[] {
-    if (!trips)
-    {
-      return [];
-    }
-    if(status == ""){
-      return trips;
-    }
-    if (status == "finished"){
-      return trips.filter(trip => this.getStatus(trip.startDate, trip.endDate) == "finished");
-    }
-    if(status == "active"){
-      return trips.filter(trip => this.getStatus(trip.startDate, trip.endDate) == "active");
-    }
-    
-    return trips.filter(trip => this.getStatus(trip.startDate, trip.endDate) == "coming up");
-  }
-}

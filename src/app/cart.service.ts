@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 import { tripHistoryDatabase } from './interfaces';
 import { tripInfo, tripInfoHistory, TripsService } from './trips.service';
@@ -23,18 +23,31 @@ export class CartService {
     this.sumOfQuantity = new BehaviorSubject<number>(0);
     this.history = new BehaviorSubject<tripHistoryDatabase[]>([]);
     try{
-      this.authService.currUserId.subscribe(res =>{
+      this.authService.currUserId.subscribe(
+        {next: res =>{
         this.currUserKey = res.id;
         if(this.currUserKey == ""){
-          throw Error("User not found")
+          try{
+            throw Error("User not found")
+          }catch{
+            console.log("jajcujesz")
+          }
+
         }
         let tempHist = this.firestore.collection<tripHistoryDatabase>("History",  ref => ref.where('user', "==", this.currUserKey)).valueChanges()
-        tempHist.subscribe(hist => {
+        tempHist.subscribe({
+          next: 
+          hist => {
           if(this.currUserKey == "" || this.currUserKey == undefined){
-            throw Error("User not found")
+            //throw Error("User not found")
           }
-          this.history.next(hist)})
-      })
+          this.history.next(hist)
+        },
+          error: e => console.log("nie masno fest")
+        })},
+        error: err => console.log("wtf")
+      }
+      )
     }catch(e){
       if(e instanceof Error){
         if(e instanceof Error){

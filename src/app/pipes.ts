@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from "@angular/core";
+import { tripHistory } from "./interfaces";
 import { tripInfo } from "./trips.service";
 
 
@@ -86,5 +87,34 @@ export class RaitingPipe implements PipeTransform {
       return raitingNum.includes(sum);
 
     })
+  }
+}
+
+//history component pipe
+
+@Pipe({ name: 'historyPipe'})
+export class HistoryPipe implements PipeTransform {
+  getStatus(endDate: string, startDate: string){
+    if(new Date(endDate) < new Date()) return "finished"
+    if(new Date(startDate) > new Date()) return "coming up"
+    return "active"
+  }
+
+  transform(trips: tripHistory[], status:string): tripHistory[] {
+    if (!trips)
+    {
+      return [];
+    }
+    if(status == ""){
+      return trips;
+    }
+    if (status == "finished"){
+      return trips.filter(trip => this.getStatus(trip.startDate, trip.endDate) == "finished");
+    }
+    if(status == "active"){
+      return trips.filter(trip => this.getStatus(trip.startDate, trip.endDate) == "active");
+    }
+    
+    return trips.filter(trip => this.getStatus(trip.startDate, trip.endDate) == "coming up");
   }
 }

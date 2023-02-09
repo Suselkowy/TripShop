@@ -25,7 +25,7 @@ import { DetailedCartComponent } from './detailed-cart/detailed-cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
 import { TripReviewComponent } from './trip-review/trip-review.component';
-import { HistoryComponent, HistoryPipe } from './history/history.component';
+import { HistoryComponent } from './history/history.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './auth.service';
@@ -33,6 +33,7 @@ import { ManagerPanelComponent } from './manager-panel/manager-panel.component';
 import { TripEditComponent } from './trip-edit/trip-edit.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { PermissionsEditComponent } from './permissions-edit/permissions-edit.component';
+import { HistoryPipe } from './pipes';
 
 @NgModule({
   declarations: [
